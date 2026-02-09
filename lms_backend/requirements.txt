@@ -1,0 +1,12 @@
+Django
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+PyJWT
+python-decouple
+python-dotenv
+Pillow
+django-filter
+sqlparse
+asgiref
+tzdata

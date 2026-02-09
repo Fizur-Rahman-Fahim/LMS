@@ -1,0 +1,73 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.DS_Store
+frontend/.vscode/
+frontend/.idea/
+
+# Backend
+lms_backend/db.sqlite3
+lms_backend/.env
+lms_backend/__pycache__/
+lms_backend/**/__pycache__/
+lms_backend/**/*.pyc
+lms_backend/**/*.pyo
+lms_backend/**/*.pyd
+lms_backend/.Python
+lms_backend/env/
+lms_backend/venv/
+lms_backend/lmsenv/
+lms_backend/build/
+lms_backend/develop-eggs/
+lms_backend/dist/
+lms_backend/downloads/
+lms_backend/eggs/
+lms_backend/.eggs/
+lms_backend/lib/
+lms_backend/lib64/
+lms_backend/parts/
+lms_backend/sdist/
+lms_backend/var/
+lms_backend/wheels/
+lms_backend/*.egg-info/
+lms_backend/.installed.cfg
+lms_backend/*.egg
+lms_backend/MANIFEST
+lms_backend/media/
+lms_backend/.vscode/
+lms_backend/.idea/
+lms_backend/.DS_Store
+
+# Python virtual environment
+lmsenv/
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Root level
+node_modules/
+.env
+.env.local
+dist/
+build/
