@@ -198,25 +198,23 @@ The application uses JWT (JSON Web Tokens) for authentication:
 ## 📱 Screenshots
 
 ### Login Page
-Users can securely log in with their credentials. The form includes validation and error handling.
+![Login Page](Screenshorts\image.png)
 
 ### Admin Dashboard
-System administrators can view comprehensive statistics including total users, courses, categories, and enrollments.
+![Admin Dashboard](Screenshorts\Admin.png)
 
 ### Instructor Dashboard
-Instructors can see their course count, total students, and enrollment metrics with quick access to create new courses.
+![Instructor Dashboard](Screenshorts\instructor.png)
 
 ### Student Dashboard
-Students get an overview of their enrolled courses, in-progress count, completed courses, and learning progress percentage.
+![alt text](Screenshorts\image-1.png)
 
 ### Course Catalog
-Browse all available courses with filtering by category. Each course card displays title, category, enrollment count, and more.
+![alt text](Screenshorts\catalog.png)
 
 ### Course Detail Page
-View comprehensive course information including description, instructor name, duration, and enrollment options for students.
+![alt text](Screenshorts\coursedetails.png)
 
-### Course Management
-Instructors can create, edit, and manage their courses with a user-friendly form interface.
 
 ## 🔄 Workflow
 
@@ -242,32 +240,7 @@ Instructors can create, edit, and manage their courses with a user-friendly form
 4. Moderate course content
 5. View system-wide analytics
 
-## 🚧 Future Enhancements
 
-- [ ] Video lesson uploads
-- [ ] Quiz and assessment system
-- [ ] Discussion forums
-- [ ] Certificate generation
-- [ ] Advance payment integration
-- [ ] Email notifications
-- [ ] Mobile app
-- [ ] Social features (likes, comments)
 
-## 📝 License
-
-This project is licensed under the MIT License.
-
-## 👥 Support
-
-For support, please create an issue in the repository or contact the development team.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
 
 ---
