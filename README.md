@@ -198,22 +198,22 @@ The application uses JWT (JSON Web Tokens) for authentication:
 ## 📱 Screenshots
 
 ### Login Page
-![Login Page](Screenshorts\image.png)
+![Login Page](Screenshorts/image.png)
 
 ### Admin Dashboard
-![Admin Dashboard](Screenshorts\Admin.png)
+![Admin Dashboard](Screenshorts/Admin.png)
 
 ### Instructor Dashboard
-![Instructor Dashboard](Screenshorts\instructor.png)
+![Instructor Dashboard](Screenshorts/instructor.png)
 
 ### Student Dashboard
-![alt text](Screenshorts\image-1.png)
+![alt text](Screenshorts/image-1.png)
 
 ### Course Catalog
-![alt text](Screenshorts\catalog.png)
+![alt text](Screenshorts/catalog.png)
 
 ### Course Detail Page
-![alt text](Screenshorts\coursedetails.png)
+![alt text](Screenshorts/coursedetails.png)
 
 
 ## 🔄 Workflow
