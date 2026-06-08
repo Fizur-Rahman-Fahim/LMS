@@ -48,6 +48,10 @@ lms_backend/.DS_Store
 # Python virtual environment
 lmsenv/
 .venv/
+
+# Local-only documentation files
+Documents/Screenshorts/userList.png
+Documents/info/lms_info.txt
 .env
 
 # IDE
