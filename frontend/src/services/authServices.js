@@ -35,9 +35,26 @@ export const authService = {
     },
 
     updateProfile: async (profileData) => {
-        const response = await api.put('/api/auth/profile/', profileData);
-        localStorage.setItem('user', JSON.stringify(response.data));
-        return response.data;
+        // Check if profileData contains a file
+        if (profileData instanceof FormData || profileData.profile_picture) {
+            // Use FormData for file uploads
+            const formData = new FormData();
+            
+            Object.keys(profileData).forEach(key => {
+                if (profileData[key] !== null && profileData[key] !== undefined) {
+                    formData.append(key, profileData[key]);
+                }
+            });
+
+            const { createFormDataRequest } = await import('./api.js');
+            const formApi = createFormDataRequest();
+            const response = await formApi.put('/api/auth/profile/', formData);
+            return response.data;
+        } else {
+            // Regular JSON request for non-file updates
+            const response = await api.put('/api/auth/profile/', profileData);
+            return response.data;
+        }
     },
 
     forgotPassword: async (email) => {

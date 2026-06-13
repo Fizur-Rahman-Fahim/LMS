@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { GraduationCap, Home, BookOpen, LogOut, Menu, X } from 'lucide-react';
+import { GraduationCap, Home, BookOpen, LogOut, Menu, X, Moon, Sun } from 'lucide-react';
 import { useAuth } from '../../context/authContext';
 
 const Navbar = () => {
-    const { user, logout } = useAuth();
+    const { user, logout, theme, toggleTheme } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,20 +65,43 @@ const Navbar = () => {
                     </div>
 
                     {/* User Menu & Logout */}
-                    <div className="hidden md:flex items-center gap-4 pl-6 border-l border-gray-200 ml-4">
+                    <div className="hidden md:flex items-center gap-4 pl-6 border-l border-gray-200 dark:border-gray-700 ml-4">
                         <div className="flex items-center gap-3">
                             <div className="text-right hidden lg:block">
                                 <p className="text-sm font-medium text-gray-700 dark:text-gray-200">{user?.first_name} {user?.last_name}</p>
                                 <p className="text-xs text-gray-500 dark:text-gray-400 capitalize">{user?.role}</p>
                             </div>
                             <Link to="/profile" className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                                <div className="w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-brand-600 dark:text-brand-400 font-bold border border-brand-200 dark:border-brand-800">
-                                    {user?.first_name?.[0] || 'U'}
-                                </div>
+                                {user?.profile_picture ? (
+                                    <img
+                                        src={`http://localhost:8000${user.profile_picture}`}  // Add full URL
+                                        alt="Profile"
+                                        className="w-8 h-8 rounded-full object-cover border border-brand-200 dark:border-brand-800"
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                            e.target.nextElementSibling.style.display = 'flex';
+                                        }}
+                                    />
+                                ) : (
+                                    <div className="w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/50 flex items-center justify-center text-brand-600 dark:text-brand-400 font-bold border border-brand-200 dark:border-brand-800">
+                                        {user?.first_name?.[0] || 'U'}
+                                    </div>
+                                )}
                             </Link>
                         </div>
 
-                        {/* theme toggle removed */}
+                        {/* Theme Toggle */}
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
+                            title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+                        >
+                            {theme === 'light' ? (
+                                <Moon className="w-5 h-5" />
+                            ) : (
+                                <Sun className="w-5 h-5" />
+                            )}
+                        </button>
 
                         <button
                             onClick={handleLogout}
@@ -92,6 +115,17 @@ const Navbar = () => {
                     {/* Mobile menu button */}
                     <div className="md:hidden flex items-center gap-2">
                         <button
+                            onClick={toggleTheme}
+                            className="p-2 rounded-md text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
+                            title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+                        >
+                            {theme === 'light' ? (
+                                <Moon className="h-5 w-5" />
+                            ) : (
+                                <Sun className="h-5 w-5" />
+                            )}
+                        </button>
+                        <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="p-2 rounded-md text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
                         >
@@ -100,19 +134,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Mobile Menu */}
-            {isMenuOpen && (
-                <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <Link to="/dashboard" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800">Dashboard</Link>
-                        <Link to="/courses" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800">Catalogue</Link>
-                        <Link to="/my-courses" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800">My Courses</Link>
-                        <Link to="/profile" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800">Profile</Link>
-                        <button onClick={handleLogout} className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20">Logout</button>
-                    </div>
-                </div>
-            )}
         </nav>
     );
 };
