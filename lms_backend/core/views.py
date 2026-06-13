@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.db.models import Count, Q
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Category, Course, Enrollment
 from .serializers import CategorySerializer, CourseSerializer, EnrollmentSerializer
 from .permissions import IsAdminOrInstructor, IsAdminOrOwner
@@ -24,7 +25,8 @@ class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.select_related('category', 'instructor').all()
     serializer_class = CourseSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['category']
     search_fields = ['title', 'description', 'category__name']
     ordering_fields = ['created_at', 'title']
     
